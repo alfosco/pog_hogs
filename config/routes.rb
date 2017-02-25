@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :items, except: [:index]
   end
 
-  resources :carts
+  # resources :carts, only: [:]
   get '/cart', to: 'carts#show'
 
   resources :items, only: [:index]

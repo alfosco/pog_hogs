@@ -11,6 +11,7 @@ require 'rails_helper'
                            )
 
       visit root_path
+
       click_on "Log In"
       expect(current_path).to eq('/login')
 

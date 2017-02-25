@@ -1,6 +1,8 @@
 class CartsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
+  # helper_method :item_lookup
+
   def create
     item = Item.find(params[:item_id])
     @cart.add_item(item.id)
@@ -10,7 +12,8 @@ class CartsController < ApplicationController
   end
 
   def show
-    @cart.contents
+    @inventory = @cart.inventory
+    # @cart.contents
   end
 
 end
