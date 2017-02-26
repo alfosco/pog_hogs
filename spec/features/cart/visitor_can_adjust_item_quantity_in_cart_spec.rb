@@ -35,21 +35,16 @@ require 'rails_helper'
 
     #And that item's quantity should reflect the increase
         within(".cart_item:nth-child(1)") do
-          expect(page).to have_content("Sub-Total")
-          expect(page).to have_content(2)
-        end
-
-    #And the subtotal for that item should increase
-        within(".cart_item:nth-child(1)") do
+          expect(page).to have_content("Sub-Total: 6.0")
           expect(page).to have_content(2)
         end
 
     #And the total for the cart should match that increase
-        expect(page).to have_content("Total")
+        expect(page).to have_content("Total: 6.0")
 
     #And when I decrease the quantity
        within(".cart_item:nth-child(1)") do
-          fill_in('update', :with => 3)
+          fill_in('update', :with => 1)
           click_on "Update Quantity"
         end
 
@@ -58,9 +53,9 @@ require 'rails_helper'
 
     #And that item's quantity should reflect the decrease
         within(".cart_item:nth-child(1)") do
-          expect(page).to have_content(3)
+          expect(page).to have_content(1)
         end
 
-        expect(page).to have_content(9)
+        expect(page).to have_content("Total: 3.0")
      end
   end

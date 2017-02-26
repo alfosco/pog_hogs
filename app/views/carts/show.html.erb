@@ -19,8 +19,8 @@
   <% end %>
 </div>
 
-<div class="subtotal">
-  Subtotal: $<%= @cart.subtotal %><br>
+<div class="total">
+  Total: $<%= @cart.total %><br>
 </div>
 <%- unless current_user == nil -%>
   <%= button_to "Proceed to checkout"%>
