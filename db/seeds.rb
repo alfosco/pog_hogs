@@ -1,5 +1,5 @@
 category_1 = Category.create(title: "Slammers")
-category_2 = Category.create(title: "Game Boards")
+category_2 = Category.create(title: "Boards")
 category_3 = Category.create(title: "Cases")
 category_4 = Category.create(title: "Pogs")
 category_5 = Category.create(title: "Sets")

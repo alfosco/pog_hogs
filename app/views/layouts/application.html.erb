@@ -9,34 +9,41 @@
   </head>
 
   <body>
-    <!-- Navbar -->
-<nav>
-    <!-- NavBar pull left -->
-  <div class="nav-wrapper">
-  <a class="brand-home"><%= link_to "PogHogs", root_path %></a>
-  <a class="brand-home"></a><%= link_to "Shop", items_path %></a>
-  <!-- NavBar pull right -->
-    <ul class="nav-right">
-      <li><a class="dropdown-button" data-activates="dropdown1">Categories<i class="material-icons right"></i></a></li>
-        <ul id="dropdown1" class="dropdown-content">
-          <% all_categories.each do |category| %>
-            <li><%=link_to category.title, category_items_path(category) %></li>
-          <% end %>
-        </ul>
-      <%- unless current_user == nil -%>
-        <li><%= link_to "Log out", logout_path, method: :delete %> </li>
-      <%- else -%>
-        <li><%= link_to "Log In", login_path, method: :get %> </li>
-      <%- end -%>
-        <li><%= link_to "My Cart", '/cart' %></li>
-    </ul>
-  </div>
-</nav>
-  <% flash.each do |type, message| %>
-    <%= content_tag :div, message, class: type %>
-  <% end %>
 
-    <p>Cart: <%= @cart.total_count %> item(s)</p>
-    <%= yield %>
+    <!-- Navbar -->
+
+    <header class="navbar navbar-fixed-top">
+      <div class="container">
+        <%= link_to "PogHogs", '/', id: "logo" %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Shop", items_path %></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <% all_categories.each do |category| %>
+                  <li><%= link_to category.title, category_path(category) %></li>
+                <% end %>
+              </ul>
+            </li>
+            <%- unless current_user == nil -%>
+              <li><%= link_to "Log out", logout_path, method: :delete %> </li>
+            <%- else -%>
+              <li><%= link_to "Log In", login_path, method: :get %> </li>
+            <%- end -%>
+              <li><%= link_to "My Cart", '/cart' %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <% flash.each do |type, message| %>
+      <%= content_tag :div, message, class: type %>
+    <% end %>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+
   </body>
 </html>

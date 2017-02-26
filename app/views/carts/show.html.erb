@@ -15,13 +15,16 @@
           Price: <%= item.price  %>
           Sub-Total: <%= (item.price * quantity) %>
       </div>
-      Total: <%= @cart.total %>
+      Total: <%= @cart.subtotal %>
   <% end %>
 </div>
 
+<div class="subtotal">
+  Subtotal: $<%= @cart.subtotal %><br>
+</div>
 <%- unless current_user == nil -%>
   <%= button_to "Proceed to checkout"%>
 <%- else -%>
-  <%= button_to "Log In to Checkout", login_path, method: :get %>
+  <%= button_to "Log In to Checkout", login_path, method: :get  %>
   <small><%= link_to "Create Account", new_user_path %></small>
   <%- end -%>

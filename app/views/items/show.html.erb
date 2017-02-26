@@ -1,0 +1,13 @@
+<h1><%= @item.title %></h1>
+
+<%= image_tag "@item.image_path" %>
+<%= @item.description %>
+$<%= @item.price %>
+
+<%- unless @item.status == 1 -%>
+  <%= button_to "Add to Cart", carts_path(item_id: @item.id), class: "btn btn-danger" %>
+<% else %>
+  <h4 class="retired">Item Retired</h4>
+<% end %>
+
+<%= link_to "Back to #{@item.category.title}", category_path(@item.category) %>
