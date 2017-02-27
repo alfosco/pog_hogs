@@ -26,5 +26,5 @@ Rails.application.routes.draw do
   put '/cart', to: 'carts#update'
 
   resources :items, only: [:index]
-  resources :orders, only: [:index, :show, :create]
+  resources :orders, only: [:index, :show, :create, :update]
 end

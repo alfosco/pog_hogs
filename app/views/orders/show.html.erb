@@ -1,0 +1,14 @@
+<h1>Order Number: <%= @order.id %></h1>
+<h4>Status: <%= @order.current_status %> </h4>
+<h6>Order Submitted: <%= @order.created_at.strftime("%d %b. %Y") %></h6>
+
+<% @order.order_items.each do |order_item| %>
+<%= link_to order_item.item.title, category_item_path(order_item.item.category, order_item.item) %><br>
+Unit price: <%= order_item.item.price %><br>
+Quantity: <%= order_item.quantity %><br>
+Subtotal: <%= order_item.quantity * order_item.item.price %><br>
+<% end %><br>
+
+Order Total: $<%= @order.total_price %><br>
+
+<%= @order.update_at %>

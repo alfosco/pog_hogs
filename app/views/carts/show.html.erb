@@ -1,29 +1,41 @@
-<h1>Your Cart</h1>
+<h1 class="center">Your Cart</h1>
 
 <div class="cart_list">
+  <table style="width:80%">
+    <tr>
+      <th>Item</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Subtotal</th>
+      <th>Update Quantity</th>
+    </tr>
+
   <% @cart_items.each do |item, quantity| %>
       <div class="cart_item">
-          Item: <%= item.title %><br>
-          Quantity: <%= quantity %><br>
+        <tr>
+          <td> <%= item.title %></td><br>
+          <td><%= quantity %></td>
+          <td><%= item.price  %></td>
+          <td><%= (item.price * quantity) %></td>
             <%= form_tag('/cart', id: item.id, method: :put) do %>
                 <div>
-                  <%= hidden_field_tag :id, "#{item.id}" %>
-                  <%= text_field_tag :update %>
-                  <%=  submit_tag 'Update Quantity' %><br>
+                      <%= hidden_field_tag :id, "#{item.id}" %>
+                  <td><%= text_field_tag :update %>
+                      <%=  submit_tag 'Update Quantity' %></td>
                 </div>
             <% end %>
-          Price: <%= item.price  %><br>
-          Subtotal: <%= (item.price * quantity) %><br>
+        </tr>
       </div>
   <% end %>
+  </table>
 </div>
 
-<div class="total">
-  Total: $<%= @cart.total %><br>
-</div>
+<div class="total right">
+  <h4>Total: $<%= @cart.total %><br></h4>
 <%- unless current_user == nil -%>
   <%= button_to "Proceed to checkout", orders_path, method: :post %>
 <%- else -%>
   <%= button_to "Log In to Checkout", login_path, method: :get  %>
   <small><%= link_to "Create Account", new_user_path %></small>
   <%- end -%>
+</div>

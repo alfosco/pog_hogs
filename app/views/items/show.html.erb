@@ -10,4 +10,5 @@ $<%= @item.price %>
   <h4 class="retired">Item Retired</h4>
 <% end %>
 
-<%= link_to "Back to #{@item.category.title}", category_path(@item.category) %>
+<%= link_to "Browse #{@item.category.title}", category_path(@item.category) %><br>
+<%= link_to "Browse All Items", '/items' %>

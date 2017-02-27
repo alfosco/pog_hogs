@@ -1,9 +1,19 @@
 <h1>Admin Dashboard</h1>
 
 <h3 class="greeting">Welcome <%= current_user.first_name %></h3>
+<%= link_to "Edit My Profile", edit_user_path(current_user) %><br>
 
-<h3>Your Profile</h3>
-<p>First Name: <%= current_user.first_name %> </p>
-<p>Last Name: <%= current_user.last_name %> </p>
-<p>Email: <%= current_user.email %> </p>
-<%= link_to "Edit My Profile", edit_user_path(current_user) %>
+<h4>Orders</h4>
+<% @orders.each do |order| %>
+<%= link_to "Invoice Number: #{order.id}", order_path(order)%> <br>
+Current Status: <%= order.current_status %><br><br>
+  <%= button_to "Mark as Completed",order_path(order), method: :put, status: order.status = 2 if order.status == 1 %>
+  <%= button_to "Cancel", order_path(order), method: :put, status: order.status = 3 if order.status == 0 || order.status == 1 %>
+  <%= button_to "Mark as Paid", order_path(order), method: :put, status: order.status = 1 if order.status == 0 %>
+<% end %>
+
+<h3>Current Count of Orders by Status</h3>
+<p>Ordered: <%= @orders.status_ordered %> </p>
+<p>Paid: <%= @orders.status_paid %></p>
+<p>Completed: <%= @orders.status_completed %></p>
+<p>Cancelled: <%= @orders.status_cancelled %></p>
