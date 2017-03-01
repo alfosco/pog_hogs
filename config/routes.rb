@@ -21,9 +21,16 @@ Rails.application.routes.draw do
   #resources :categories, path: ''
   #^^^ this removes categories so url is just '/slammers' but causes a nil error
 
-  resources :categories, only: [:show] do
-    resources :items, only: [:show]
-  end
+  # resources :categories, only: [:show], as: :category do
+  #   resources :items, only: [:show]
+  # end
+
+    resources :categories, only: [:show]
+    resources :categories, controller: 'items', only: [:show]
+
+  # get ':category/:item/:id', to: 'items#show', as: :category
+
+
 
   get '/carts', to: 'carts#index'
   post '/carts', to: 'carts#create'
