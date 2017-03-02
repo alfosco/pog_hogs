@@ -60,8 +60,8 @@ end
 # heroku gems
 gem 'rails_12factor', group: :production
 
-# hound gems
-gem 'rubocop', '~> 0.47.1', require: false
+# friendly id gems
+gem 'friendly_id', '~> 5.1.0'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

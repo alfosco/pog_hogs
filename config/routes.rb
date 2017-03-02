@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   #resources :categories, path: ''
   #^^^ this removes categories so url is just '/slammers' but causes a nil error
 
-  resources :categories, only: [:show] do
+  resources :categories, only: [:show], path: '' do
     resources :items, only: [:show]
   end
 
@@ -32,4 +32,6 @@ Rails.application.routes.draw do
   delete '/cart', to: 'carts#destroy'
 
   resources :orders, only: [:index, :show, :create]
+
+  # get '/categories/:id', to: 'categories#show', as: 'category'
 end
