@@ -1,13 +1,13 @@
 <h1>Everything We Got</h1>
 
+<table>
 
   <% @categories.each do |category| %>
+  <h3 class="category"> <%= category.title %></h3>
     <div class="row">
-      <h3 class="category"> <%= category.title %></h3>
           <% category.items.each do |item| %>
-
+          <div class="column">
           <div class="<%= item.title %>" style="text-align: center;">
-            <div class="column">
               <div class="col-sm-4 col-lg-4 col-md-4">
                   <div class="thumbnail">
                       <%= image_tag(item.image_path) %>
@@ -22,7 +22,6 @@
                             <h4 class="Item retired">Item Retired</h4>
                           <% end %>
                       </div>
-                      
                   </div>
               </div>
             </div>
@@ -30,3 +29,4 @@
         <% end %>
     </div>
   <% end %>
+</table>

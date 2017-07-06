@@ -22,16 +22,19 @@ body {
 }
 
 .caption {
-    height: 130px;
-    overflow: hidden;
+    height: 140px;
+    /*position: absolute;
+    bottom: 20px;
+    right: 0;*/
 }
 
 .caption h4 {
-    white-space: nowrap;
+    white-space: wrap;
 }
 
 .thumbnail img {
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%
 }
 
 .ratings {
@@ -42,6 +45,7 @@ body {
 
 .thumbnail {
     padding: 0;
+    height: 330px
 }
 
 .thumbnail .caption-full {
@@ -51,4 +55,8 @@ body {
 
 footer {
     margin: 50px 0;
+}
+.flex-container {
+    -webkit-align-items: stretch; /* Safari */
+    align-items:         stretch;
 }
